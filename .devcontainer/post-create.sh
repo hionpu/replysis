@@ -6,6 +6,11 @@ echo "--- Starting Post-Create Command ---"
 # Ensure HOME is set correctly for subsequent operations in the container
 export HOME="/home/vscode" 
 
+sudo apt-get update
+sudo apt-get install -y \
+    inotify-tools \
+    build-essential 
+
 # Install global npm packages (latest versions)
 echo "--- Installing npm packages (gemini-cli, pyright)... ---"
 npm install -g npm@latest
@@ -31,21 +36,6 @@ unzip -q "elixir-ls-${ELIXIR_LS_VERSION}.zip" -d "/home/vscode/.local/elixir-ls"
 chmod +x "/home/vscode/.local/elixir-ls/language_server.sh"
 ln -sf "/home/vscode/.local/elixir-ls/language_server.sh" "/home/vscode/.local/bin/elixir-ls"
 rm -f "elixir-ls-${ELIXIR_LS_VERSION}.zip"
-
-# echo "--- Installing ElixirLS... ---"
-# mkdir -p "$HOME/.local/elixir-ls"
-# mkdir -p "$HOME/.local/bin"
-# mkdir -p "$HOME/.cache/elixir-ls"
-# ELIXIR_LS_VERSION=$(curl -s https://api.github.com/repos/elixir-lsp/elixir-ls/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-# wget "https://github.com/elixir-lsp/elixir-ls/releases/download/${ELIXIR_LS_VERSION}/elixir-ls-${ELIXIR_LS_VERSION}.zip"
-# unzip "elixir-ls-${ELIXIR_LS_VERSION}.zip" -d "$HOME/.local/elixir-ls"
-# chmod +x "$HOME/.local/elixir-ls/language_server.sh"
-# ln -sf "$HOME/.local/elixir-ls/language_server.sh" "$HOME/.local/bin/elixir-ls"
-# rm -f "elixir-ls-${ELIXIR_LS_VERSION}.zip"
-
-# Set ElixirLS environment variables
-# export ELS_CACHE_DIR="$HOME/.cache/elixir-ls"
-# export ELS_ELIXIR_PATH="/usr/local/bin/elixir"
 
 # Find the pyright-langserver executable and related Node.js paths
 echo "Finding pyright-langserver and Node.js paths..."
