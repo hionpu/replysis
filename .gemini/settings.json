@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "go-server": {
+      "type": "stdio",
+      "command": "/home/vscode/go/bin/mcp-language-server",
+      "args": [
+        "--workspace",
+        "/workspace/dev/go",
+        "--lsp",
+        "/home/vscode/go/bin/gopls"
+      ],
+      "env": {}
+    },
+    "python-server": {
+      "type": "stdio",
+      "command": "/home/vscode/go/bin/mcp-language-server",
+      "args": [
+        "--workspace",
+        "/workspace/dev/python",
+        "--lsp",
+        "/usr/local/share/nvm/versions/node/v22.18.0/bin/pyright-langserver",
+        "--",
+        "--stdio"
+      ],
+      "env": {}
+    },
+    "elixir-server": {
+      "type": "stdio",
+      "command": "/home/vscode/go/bin/mcp-language-server",
+      "args": [
+        "--workspace",
+        "/workspace/dev/elixir",
+        "--lsp",
+        "/home/vscode/.local/bin/elixir-ls"
+      ],
+      "env": {}
+    },
+    "rust-server": {
+      "type": "stdio",
+      "command": "/home/vscode/go/bin/mcp-language-server",
+      "args": [
+        "--workspace",
+        "/workspace/dev/rust",
+        "--lsp",
+        "/home/vscode/.cargo/bin/rust-analyzer"
+      ],
+      "env": {}
+    }
+  }
+}

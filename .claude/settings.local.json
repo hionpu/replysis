@@ -1,0 +1,9 @@
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "go-server",
+    "python-server",
+    "elixir-server",
+    "rust-server"
+  ]
+}

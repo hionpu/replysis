@@ -1,0 +1,54 @@
+{
+  "name": "Replysis",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+
+  // Add this 'features' block to install Node.js and npm
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+    
+  },
+  
+  // VScode extensions to install
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-python.python",
+        "ms-python.pylint",
+
+        "rust-lang.rust-analyzer",
+
+        "JakeBecker.elixir-ls"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "go.gopath": "/home/vscode/go",
+        "go.goroot": "/usr/local/go",
+        "elixirLS.projectDir": "/workspace/dev/elixir",
+        "elixirLS.dialyzerEnabled": false,
+        "elixirLS.fetchDeps": false
+      }
+    }
+  },
+
+  "containerEnv": {
+    "GOPATH": "/home/vscode/go",
+    "GOROOT": "/usr/local/go",
+    "ELS_CACHE_DIR": "/home/vscode/.cache/elixir-ls",
+    "ELS_ELIXIR_PATH": "/usr/local/bin/elixir"
+  },
+  
+  // Updated command to use npm for gemini-cli
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  
+  // Port forwarding
+  "forwardPorts": [3000, 4000, 8000],
+  
+  // User to use inside the container
+  "remoteUser": "vscode"
+}

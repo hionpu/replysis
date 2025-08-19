@@ -1,0 +1,92 @@
+# Using official Elixir image (fallback from hexpm issues)
+FROM elixir:1.18-otp-27
+
+# Install essential utilities including jq for JSON parsing
+RUN apt-get update && apt-get install -y \
+    bash \
+    coreutils \
+    util-linux \
+    procps \
+    curl \
+    git \
+    build-essential \
+    sudo \
+    wget \
+    unzip \
+    software-properties-common \
+    apt-transport-https \
+    ca-certificates \
+    gnupg \
+    lsb-release \
+    vim \
+    nano \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Hex and Rebar first
+RUN mix local.hex --force && \
+    mix local.rebar --force
+
+# Install Phoenix archive with more explicit error handling
+RUN mix archive.install hex phx_new --force && \
+    mix archive
+
+# Verify Elixir and Erlang versions (for logging)
+RUN echo "Elixir version: $(elixir --version)" && echo "Erlang version: $(erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().' -noshell)"
+
+# Python installation
+RUN apt-get update && apt-get install -y     python3     python3-pip     python3-venv     python3-dev     && rm -rf /var/lib/apt/lists/*
+
+# Create Python symbolic link
+RUN ln -s /usr/bin/python3 /usr/local/bin/python
+
+# Go installation
+RUN LATEST_GO_VERSION=$(curl -s "https://go.dev/dl/?mode=json" | jq -r '.[0].version') &&     wget "https://go.dev/dl/${LATEST_GO_VERSION}.linux-amd64.tar.gz" -O go.tar.gz &&     tar -C /usr/local -xzf go.tar.gz &&     rm go.tar.gz
+
+# Go environment variables setup
+ENV PATH="/usr/local/go/bin:${PATH}"
+ENV GOPATH="/go"
+ENV GOROOT="/usr/local/go"
+
+# Create vscode user with proper setup
+RUN groupadd --gid 1000 vscode \
+    && useradd --uid 1000 --gid vscode --shell /bin/bash --create-home vscode \
+    && echo 'vscode ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# Create and set permissions for vscode-server directory and temp directories
+RUN mkdir -p /home/vscode/.vscode-server /tmp/vscode-tmp \
+    && chown -R vscode:vscode /home/vscode/.vscode-server /tmp/vscode-tmp \
+    && chmod 755 /tmp/vscode-tmp
+
+# Create directories and set permissions
+RUN mkdir -p /workspace /home/vscode/go \
+    && chown -R vscode:vscode /workspace /home/vscode/go
+
+# Switch to vscode user and install Phoenix for the user
+USER vscode
+WORKDIR /home/vscode
+
+# Set MIX_HOME to avoid permission issues
+ENV MIX_HOME="/home/vscode/.mix"
+ENV TMPDIR="/tmp/vscode-tmp"
+
+# Install Phoenix for the vscode user
+RUN mix local.hex --force && \
+    mix local.rebar --force && \
+    mix archive.install hex phx_new --force
+
+# User-specific environment variables
+ENV PATH="/usr/local/go/bin:/home/vscode/go/bin:/home/vscode/.local/bin:${PATH}"
+ENV GOPATH="/home/vscode/go"
+ENV GOROOT="/usr/local/go"
+
+# Rust installation (user environment)
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/home/vscode/.cargo/bin:${PATH}"
+
+# Set working directory
+WORKDIR /workspace
+
+# Use a simpler, more reliable command to keep container running
+ENTRYPOINT ["/bin/bash"]
+CMD ["-c", "while true; do sleep 10; done"]

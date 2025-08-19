@@ -1,0 +1,22 @@
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# AI-related
+.smart-env/
+.gemini_user/
+
+# Rust
+dev/rust/target/
+
+# Elixir
+dev/elixir/_build/
+dev/elixir/deps/
+dev/elixir/.elixir_ls/
+
+# Environment variables
+.env
+

@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+      ".obsidian/": true,
+      "_mcp" : true,
+      ".Old" : true,
+      ".smart-env" : true,
+
+      // Elixir
+      "**/.git": true,
+      "**/.elixir_ls": true,
+      "**/dev/elixir/app/_build": true,
+      "**/dev/elixir/app/deps": true,
+
+      // Python
+      "**/.venv": true,
+      "**/venv": true,
+      
+
+    },
+    "python.analysis.extraPaths": ["./dev/python"],
+    "elixirLS.projectDir": "dev/elixir"
+  }
