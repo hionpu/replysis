@@ -18,5 +18,5 @@
 
     },
     "python.analysis.extraPaths": ["./dev/python"],
-    "elixirLS.projectDir": "dev/elixir"
+    "elixirLS.projectDir": "dev/elixir/app"
   }

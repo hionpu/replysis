@@ -21,14 +21,14 @@ A solo-developed YouTube comment analysis application built incrementally across
 
 ## Phase 1: Core Comment Extraction
 
-**Goal**: Simple YouTube URL → Comment Table Display **Duration**: 2-3 weeks **Tech Stack**: Elixir + Phoenix + HTMX
+**Goal**: Simple YouTube URL → Comment Table Display **Duration**: 2-3 weeks **Tech Stack**: Elixir + Phoenix + LiveView
 
 ### Features
 
 - [ ] Web form for YouTube URL input
 - [ ] YouTube Data API v3 integration
 - [ ] Comment thread parsing (including replies)
-- [ ] HTMX-driven table display with columns:
+- [ ] LiveView-driven table display with columns:
     - Username
     - Timestamp
     - Comment content
@@ -40,7 +40,7 @@ A solo-developed YouTube comment analysis application built incrementally across
 ### Technical Requirements
 
 - [ ] Phoenix web application setup
-- [ ] HTMX integration for dynamic updates
+- [ ] LiveView integration for dynamic updates
 - [ ] YouTube API client implementation
 - [ ] Comment data structure design
 - [ ] Hypermedia response templates
@@ -99,7 +99,7 @@ A solo-developed YouTube comment analysis application built incrementally across
 
 ### Features
 
-- [ ] Word frequency analysis with HTMX animations
+- [ ] Word frequency analysis with LiveView animations
 - [ ] Comment statistics:
     - Total comments per video
     - Average comment length
@@ -122,7 +122,7 @@ A solo-developed YouTube comment analysis application built incrementally across
     - Frequency counting
     - N-gram analysis
 - [ ] REST API endpoints for statistics (direct DB access)
-- [ ] HTMX-compatible JSON responses for animations
+- [ ] LiveView-compatible JSON responses for animations
 - [ ] Integration with existing FastAPI service
 
 ### Deliverables
