@@ -1,7 +1,7 @@
 defmodule App.MixProject do
   use Mix.Project
 
-  def project do
+def project do
     [
       app: :app,
       version: "0.1.0",
@@ -40,12 +40,12 @@ defmodule App.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.8.0"},
-      {:phoenix_ecto, "~> 4.5"},
+      {:phoenix, "~> 1.8"},
+      {:phoenix_ecto, "~> 4.6"},
       {:ecto_sql, "~> 3.13"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 4.1"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_html, "~> 4.2"},
+      {:phoenix_live_reload, "~> 1.6", only: :dev},
       {:phoenix_live_view, "~> 1.1.0"},
       {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},

@@ -17,13 +17,7 @@ defmodule AppWeb.Router do
   scope "/", AppWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-
-    live "/videos", VideoLive.Index, :index
-    live "/videos/new", VideoLive.Form, :new
-    live "/videos/:id", VideoLive.Show, :show
-    live "/videos/:id/edit", VideoLive.Index, :edit
-    live "/videos/:id/delete", VideoLive.Index, :delete
+    live "/", LandingLive, :index
   end
 
   # Other scopes may use custom stacks.

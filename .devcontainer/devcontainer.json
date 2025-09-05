@@ -50,5 +50,17 @@
   "forwardPorts": [3000, 4000, 8000],
   
   // User to use inside the container
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+
+  "mounts": [
+    "source=${localWorkspaceFolder}/dev/elixir,target=/workspace/dev/elixir,type=bind,consistency=cached"
+      ],
+      "portsAttributes": {
+        "33779": {
+          "label": "GEMINI"
+        },
+        "44523": {
+          "label": "gemini ide"
+        }
+      }
 }

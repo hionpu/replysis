@@ -30,7 +30,17 @@ config :app, AppWeb.Endpoint,
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:app, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:app, ~w(--watch)]}
+  ],
+  code_reloader: [
+    patterns: [
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/app_web/(controllers|live|components)/.*(ex|heex)$",
+      ~r"lib/app_web/views/.*(ex)$",
+      ~r"lib/app/.*(ex)$"
+    ]
   ]
+
 
 # ## SSL Support
 #
@@ -89,3 +99,14 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :phoenix, :code_reloader,
+  reloader: &Phoenix.CodeReloader.Server.reload!/1
+
+config :phoenix_live_reload,
+  backend: :fs_poll,
+  dirs: [
+    "lib/",
+    "priv/static/",
+    "priv/gettext/",
+  ]

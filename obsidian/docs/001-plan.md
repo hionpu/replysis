@@ -21,6 +21,7 @@ A solo-developed YouTube comment analysis application built incrementally across
 
 ## Phase 1: Core Comment Extraction
 
+[[002-elixir_to_python_API_contract]]
 **Goal**: Simple YouTube URL → Comment Table Display **Duration**: 2-3 weeks **Tech Stack**: Elixir + Phoenix + LiveView
 
 ### Features

@@ -18,5 +18,8 @@
 
     },
     "python.analysis.extraPaths": ["./dev/python"],
-    "elixirLS.projectDir": "dev/elixir/app"
+    "elixirLS.projectDir": "dev/elixir/app",
+    "emmet.includeLanguages": {
+      "phoenix-heex": "html"
+    },
   }

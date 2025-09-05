@@ -1,4 +1,10 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(mix:*)",
+      "Bash(iex:*)"
+    ]
+  },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "go-server",

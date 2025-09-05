@@ -13,31 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/001-plan.md",
+                "file": "docs/002-elixir_to_python_API_contract.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "001-plan"
+              "title": "002-elixir_to_python_API_contract"
             }
-          }
-        ]
-      },
-      {
-        "id": "81d5180d627db0f1",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "a252b06ebcf4f9d5",
+            "id": "e316a2d9dee875bc",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "그래프 뷰"
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.12"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.9.12"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -174,6 +171,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:새 베이스 생성하기": false,
       "switcher:빠른 전환기 열기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
@@ -182,9 +180,11 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "f7e1013ba93f69d3",
+  "active": "e316a2d9dee875bc",
   "lastOpenFiles": [
     "docs/001-plan.md",
+    "docs/002-elixir_to_python_API_contract.md",
+    "gemini_cli_companion_error.md",
     "docs",
     "환영합니다!.md"
   ]
