@@ -110,3 +110,7 @@ config :phoenix_live_reload,
     "priv/static/",
     "priv/gettext/",
   ]
+
+
+config :app, :fastapi_service,
+  base_url: "http://localhost:4000"

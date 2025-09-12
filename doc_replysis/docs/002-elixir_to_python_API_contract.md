@@ -3,7 +3,7 @@
 The endpoint should reflect that it's operating on a video, not a single comment. A POST request is still appropriate because it triggers a complex, multi-step action with side effects (storing many records in the DB).
 
 - Method: POST
-- URL: http://your-fastapi-app.com/api/v1/fetch-replies-by-video
+- URL: http://your-fastapi-app.com/api/v1/fetch-replies-by-video-id
 ## 2. Request Body
 
 ```JSON
